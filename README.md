@@ -104,6 +104,111 @@ This will:
 3. 🔘 Click "Search" to retrieve and analyze data
 4. 📈 View sentiment analysis, top keywords, and sample results
 
+## 🏗️ Architecture
+
+```mermaid
+graph TD
+    A[User Interface] --> B[Flask API Server]
+    B --> C1[Reddit Scraper]
+    B --> C2[Hacker News Scraper]
+    B --> C3[Quora Scraper]
+    C1 --> D[Data Aggregation]
+    C2 --> D
+    C3 --> D
+    D --> E1[Sentiment Analysis]
+    D --> E2[Keyword Extraction]
+    E1 --> F[Results Processing]
+    E2 --> F
+    F --> G[Data Visualization]
+    G --> A
+```
+
+### Data Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant API
+    participant Scrapers
+    participant Analyzers
+    
+    User->>Frontend: Enter search term & platforms
+    Frontend->>API: POST /api/search
+    API->>Scrapers: Fetch data from platforms
+    Scrapers-->>API: Return raw data
+    API->>Analyzers: Process text & sentiment
+    Analyzers-->>API: Return analysis results
+    API-->>Frontend: Return processed data
+    Frontend-->>User: Display visualizations & insights
+```
+
+### Component Structure
+
+```
+┌─────────────────────────────────────────────────────┐
+│                                                     │
+│                    User Interface                   │
+│                                                     │
+└───────────────────────┬─────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────┐
+│                                                     │
+│                    Flask API Server                 │
+│                                                     │
+└──┬─────────────────────┬────────────────────────┬───┘
+   │                     │                        │
+   ▼                     ▼                        ▼
+┌─────────┐       ┌─────────────┐          ┌──────────┐
+│ Scrapers │       │  Analyzers  │          │ Visualizer│
+└──┬───┬───┘       └──────┬──────┘          └─────┬────┘
+   │   │                  │                       │
+   │   │                  ▼                       │
+   │   │          ┌─────────────┐                 │
+   │   │          │  Sentiment  │                 │
+   │   │          │  Analysis   │                 │
+   │   │          └──────┬──────┘                 │
+   │   │                 │                        │
+   │   │                 ▼                        │
+   │   │          ┌─────────────┐                 │
+   │   │          │   Keyword   │                 │
+   │   │          │  Extraction │                 │
+   │   │          └─────────────┘                 │
+   │   │                                          │
+   ▼   ▼                                          ▼
+┌─────────────────────────────────────────────────────┐
+│                                                     │
+│                     Data Storage                    │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+```
+
+## 🎨 UI Design
+
+The Market Research Bot features a modern Bento UI design that provides:
+
+- **Card-Based Layout**: Clean, organized information display using a grid system
+- **Data Visualization**: Interactive sentiment bars and keyword clouds
+- **Platform-Specific Insights**: Dedicated sections for each platform's analysis
+- **Responsive Design**: Adapts to different screen sizes for optimal viewing
+- **Visual Hierarchy**: Clear organization of information with intuitive navigation
+
+<div align="center">
+  <img src="https://i.imgur.com/placeholder-image.png" alt="Bento UI Screenshot" width="800">
+</div>
+
+### UI Components
+
+| Component | Description |
+|-----------|-------------|
+| Search Panel | Allows users to input search terms and select platforms |
+| Sentiment Dashboard | Displays overall sentiment analysis with color-coded indicators |
+| Platform Breakdown | Shows sentiment distribution across different platforms |
+| Keyword Cloud | Visual representation of trending topics sized by frequency |
+| Results List | Displays sample discussions with sentiment indicators |
+| Insights Panel | AI-generated summary of key findings and trends |
+
 ## 📦 Project Structure
 
 ```
