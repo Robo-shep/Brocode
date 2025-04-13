@@ -10,10 +10,6 @@
 
 > 🧠 A lightweight, real-time market intelligence tool that pulls sentiment and discussion insights from Reddit, Hacker News, and Quora — tailored specifically for developers, indie hackers, and early-stage product teams.
 
-<p align="center">
-  <img src="https://i.imgur.com/placeholder-image.png" alt="Project Crux Screenshot" width="600">
-</p>
-
 ## ✨ What It Does
 
 - 🔎 **Search & Discover** - Let users search for a product or topic across multiple platforms
@@ -194,10 +190,6 @@ The Market Research Bot features a modern Bento UI design that provides:
 - **Responsive Design**: Adapts to different screen sizes for optimal viewing
 - **Visual Hierarchy**: Clear organization of information with intuitive navigation
 
-<div align="center">
-  <img src="https://i.imgur.com/placeholder-image.png" alt="Bento UI Screenshot" width="800">
-</div>
-
 ### UI Components
 
 | Component | Description |
@@ -258,11 +250,13 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👥 Contributors
 
-- [Your Team Names Here]
+- BroCode
+  ->Aastha Sawant
+  ->Anant Srivastava
+  ->Vivek Khandelwal
 
 ---
 
 <div align="center">
   <p>Made with ❤️ for the Hackathon</p>
-  <p>© 2025 Project Crux - Market Research Bot</p>
 </div>
