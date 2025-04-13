@@ -9,81 +9,94 @@ A powerful Market Research Bot that scrapes, aggregates, and analyzes discourse 
 - Performs sentiment analysis to gauge public opinion.
 - Highlights frequently mentioned features, complaints, and suggestions.
 - Summarizes the general discourse using NLP.
-- (Optional) Ranks platforms by engagement or sentiment score.
+- Visualizes sentiment data and keyword trends.
 
 ## 🛠 Tech Stack
 
-- **Backend**: Python, Flask / FastAPI
-- **Web Scraping**: BeautifulSoup, Scrapy, PRAW (Reddit), API integrations
-- **NLP**: spaCy, NLTK, or Hugging Face Transformers
-- **Sentiment Analysis**: VADER, TextBlob, or finetuned BERT model
-- **Data Storage**: MongoDB / SQLite / PostgreSQL
-- **Visualization (Optional)**: Dash / Streamlit / React Frontend
+- **Backend**: Python, Flask
+- **Web Scraping**: BeautifulSoup, PRAW (Reddit API)
+- **NLP**: spaCy, NLTK
+- **Sentiment Analysis**: VADER
+- **Frontend**: HTML, CSS, JavaScript
 
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
 
-```bash
-git clone https://github.com/your-username/market-research-bot.git
-cd market-research-bot
-```
-### 2. Set up Enviornment
+Download the project files to your local machine.
+
+### 2. Set up Environment
+
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+venv\Scripts\activate  # On Windows
 pip install -r requirements.txt
 ```
-### 3. Add API keys
-```ini
-REDDIT_CLIENT_ID=your_id
-REDDIT_CLIENT_SECRET=your_secret
-REDDIT_USER_AGENT=your_agent
-```
-### 4. Run the BOT
-```bash
-python main.py --project "OpenAI GPT" --platforms reddit hackernews
-```
-### 5. View The Output
-Check the generated summary in /outputs/summary_OpenAI_GPT.txt or as JSON in /outputs/OpenAI_GPT.json.
-#### An Example Output:
-```
-project: "OpenAI GPT"
-platforms:
-  - reddit
-  - hackernews
-  - stackexchange
-output_format: "json"
-max_posts: 100
 
-{
-  "project": "OpenAI GPT",
-  "sentiment_score": 0.72,
-  "top_keywords": ["AI", "chatbot", "jobs", "productivity"],
-  "highlights": [
-    "Users are impressed by GPT's writing abilities.",
-    "Concerns about misuse and ethical risks.",
-    "Discussions on its impact on the job market."
-  ],
-  "platform_summary": {
-    "Reddit": "Mixed sentiment with deeper technical discussions.",
-    "Hacker News": "Focus on ethical implications and business impact."
-  }
-}
+### 3. Configure API Keys
+
+Edit the following files to add your API credentials:
+
+- `src/scrapers/reddit_scraper.py`: Add your Reddit API credentials
+
+```python
+REDDIT_CLIENT_ID = "your_client_id"
+REDDIT_CLIENT_SECRET = "your_client_secret"
+REDDIT_USER_AGENT = "your_user_agent"
 ```
-### 📦 Directory Structure
+
+### 4. Run the Backend Server
+
+```bash
+python app.py
+```
+
+This will start the Flask server on http://localhost:5000.
+
+### 5. Test the Application
+
+```bash
+python simple_test.py
+```
+
+This will:
+- Start the Flask server in a new command window
+- Run a test on the API endpoint
+- Open a simple HTML frontend in your browser for testing
+
+## 📊 Using the Application
+
+1. Enter a search term (e.g., "Python", "AI", "Web Development")
+2. Select platforms to search (Reddit, Hacker News, Quora)
+3. Click "Search" to retrieve and analyze data
+4. View sentiment analysis, top keywords, and sample results
+
+## 📦 Project Structure
+
 ```
 market-research-bot/
-├── data/
-│   └── raw_data/
-├── outputs/
-│   └── summaries/
 ├── src/
 │   ├── scrapers/
+│   │   ├── reddit_scraper.py
+│   │   ├── hackernews_scraper.py
+│   │   └── quora_scraper.py
 │   ├── analyzers/
+│   │   ├── sentiment_analyzer.py
+│   │   └── keyword_extractor.py
 │   └── visualizer.py
-├── main.py
-├── config.yaml
+├── app.py              # Flask API server
+├── main.py             # Command-line interface
+├── test_api.py         # API endpoint tests
+├── simple_test.py      # Combined backend/frontend test
+├── test_frontend.html  # Simple HTML frontend for testing
 ├── requirements.txt
 └── README.md
 ```
+
+## 📝 Future Improvements
+
+- Add more data sources (Twitter, Product Hunt, etc.)
+- Implement more advanced sentiment analysis
+- Create a more sophisticated frontend with data visualizations
+- Add user authentication and saved searches
+- Implement caching to improve performance
